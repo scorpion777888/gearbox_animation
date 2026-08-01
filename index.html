@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realistic 3D Gearbox Simulator</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <section id="scene-wrap" aria-label="Animated 3D manual gearbox"></section>
+
+    <aside class="hud" aria-label="Gearbox status">
+      <div class="brand">Manual Gearbox</div>
+      <div class="active-gear" id="active-gear">Neutral</div>
+      <dl class="telemetry">
+        <div>
+          <dt>Ratio</dt>
+          <dd id="ratio-readout">0.00:1</dd>
+        </div>
+        <div>
+          <dt>Engine</dt>
+          <dd id="engine-readout">2400 rpm</dd>
+        </div>
+        <div>
+          <dt>Output</dt>
+          <dd id="output-readout">0 rpm</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <section class="controls-panel" aria-label="Gearbox controls">
+      <div class="control-group">
+        <span class="control-title">Gear</span>
+        <div class="gear-buttons" role="group" aria-label="Gear selection">
+          <button class="gear-btn" type="button" data-gear="R" aria-label="Reverse gear">R</button>
+          <button class="gear-btn is-active" type="button" data-gear="N" aria-label="Neutral gear">N</button>
+          <button class="gear-btn" type="button" data-gear="1" aria-label="First gear">1</button>
+          <button class="gear-btn" type="button" data-gear="2" aria-label="Second gear">2</button>
+          <button class="gear-btn" type="button" data-gear="3" aria-label="Third gear">3</button>
+          <button class="gear-btn" type="button" data-gear="4" aria-label="Fourth gear">4</button>
+          <button class="gear-btn" type="button" data-gear="5" aria-label="Fifth gear">5</button>
+        </div>
+      </div>
+
+      <label class="slider-control" for="rpm">
+        <span>Engine rpm <strong id="rpm-value">2400</strong></span>
+        <input id="rpm" type="range" min="700" max="6500" step="100" value="2400">
+      </label>
+
+      <label class="slider-control" for="view">
+        <span>View depth <strong id="view-value">Normal</strong></span>
+        <input id="view" type="range" min="0" max="100" step="1" value="42">
+      </label>
+
+      <label class="switch-control">
+        <input id="casing-toggle" type="checkbox" checked>
+        <span>Casing</span>
+      </label>
+    </section>
+  </main>
+
+  <script src="./main.js" defer></script>
+</body>
+</html>
